@@ -1,4 +1,4 @@
-package com.example.mdm;
+package com.example.mdm.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +13,7 @@ public class CompanyService implements ICompany {
 
     @Override
     public List<Company> findall() {
+        
         return repository.findAll();
 
     }

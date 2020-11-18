@@ -1,4 +1,4 @@
-package com.example.mdm;
+package com.example.mdm.models;
 
 import java.util.List;
 

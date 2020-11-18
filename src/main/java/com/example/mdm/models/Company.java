@@ -1,26 +1,25 @@
-package com.example.mdm;
-
+package com.example.mdm.models;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+//@Data
 @Entity
-//@ManyToMany
 @Table(name="companies",schema="public")
 public class Company {
     @Id
-    private String id;
+    private Long id;
     private String name;
     private String address;
 
-
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

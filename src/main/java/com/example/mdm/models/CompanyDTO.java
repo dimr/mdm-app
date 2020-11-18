@@ -1,4 +1,4 @@
-package com.example.mdm;
+package com.example.mdm.models;
 
 public class CompanyDTO {
     private Long companyID;

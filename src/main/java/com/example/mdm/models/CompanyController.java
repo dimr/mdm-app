@@ -1,4 +1,4 @@
-package com.example.mdm;
+package com.example.mdm.models;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,10 @@ public class CompanyController {
     @Autowired
     private ICompany companyService;
 
-    @GetMapping("/all")
+    @Autowired
+    private IEmployee employeeService;
+
+    @GetMapping("/companies")
     List<Company> all(){
         List<Integer> ints = new ArrayList<>();
         ints.add(3);
@@ -22,5 +25,10 @@ public class CompanyController {
         ints.add(2);
 
         return companyService.findall();
+    }
+
+    @GetMapping("/employees")
+    List<Employee> employees(){
+        return employeeService.findAll();
     }
 }
