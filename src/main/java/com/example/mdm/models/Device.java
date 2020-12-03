@@ -1,4 +1,6 @@
 package com.example.mdm.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,18 +12,19 @@ import javax.persistence.*;
 @Table(name = "devices")
 public class Device {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String serialId;
-
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name="employee_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String serial_number;
+    private String type;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, optional = false)
+    @JoinColumn(name = "employee_id")
+    @JsonIgnore
     private Employee employee;
 
     public Device(String serialId, Employee employee) {
-        this.serialId = serialId;
+        this.serial_number = serialId;
         this.employee = employee;
     }
 
@@ -29,23 +32,50 @@ public class Device {
 
     }
 
+    public Device(String serial_number, String type) {
+        this.serial_number = serial_number;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Long getId() {
         return this.id;
-    }
-
-    public String getSerialId() {
-        return this.serialId;
-    }
-
-    public Employee getEmployee(){
-        return this.employee;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setSerialId(String serialId) {
-        this.serialId = serialId;
+    @Override
+    public String toString() {
+        return "Device{" +
+                "id=" + id +
+                ", serial_number='" + serial_number + '\'' +
+                ", type='" + type + '\'' +
+                ", employee=" + employee +
+                '}';
+    }
+
+    public String getSerial_number() {
+        return this.serial_number;
+    }
+
+    public void setSerial_number(String serial_number) {
+        this.serial_number = serial_number;
+    }
+
+    public Employee getEmployee() {
+        return this.employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

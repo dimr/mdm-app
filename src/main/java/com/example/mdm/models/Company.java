@@ -1,10 +1,10 @@
 package com.example.mdm.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //@Data
 @Entity
@@ -15,9 +15,30 @@ public class Company {
     private String name;
     private String address;
 
+    public  Company(){}
+    public Company(String name) {
+        this.name = name;
+    }
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH}, mappedBy = "company")
+    private List<Employee> employees=new ArrayList<>();
+
+
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<Employee> getEmployees(){
+        return this.employees;
+    }
+
+    public void addEmployee(Employee employee){
+        this.employees.add(employee);
+        employee.setCompany(this);
+    }
+
 
     public Long getId() {
         return id;
