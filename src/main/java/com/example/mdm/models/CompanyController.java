@@ -1,41 +1,55 @@
 package com.example.mdm.models;
 
 
+import com.example.mdm.CompanyService.CompanyService;
+import com.example.mdm.dtos.CompanyDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
+
+
+
 
 @RestController
 @RequestMapping("/api")
 public class CompanyController {
-    private final CompanyRepository companyRepository;
-    private final EmployeeRepository employeeRepository;
 
-    public CompanyController(CompanyRepository companyRepository, EmployeeRepository employeeRepository) {
-        this.companyRepository = companyRepository;
-        this.employeeRepository = employeeRepository;
+    @Autowired
+    private final CompanyService companyService;
+    private final CompanyDTO companyDTO;
+    private ModelMapper mapper;
+
+
+    public CompanyController(CompanyService companyService,CompanyDTO companyDTO){
+        this.companyService=companyService;
+        this.companyDTO = companyDTO;
+        this.mapper = new ModelMapper();
+        this.mapper.map(companyService,companyDTO);
+
     }
 
-    public ResponseEntity<Company> getCompanyById(@PathVariable Long id){
-        Optional<Company> optionalCompany = this.companyRepository.findById(id);
-        return ResponseEntity.ok(optionalCompany.get());
+
+    @GetMapping("companies/{id}")
+    public Optional<Company> getCompany(@PathVariable Long id){
+        return this.companyService.findCompanyById(id);
     }
 
-
-    @GetMapping("/companies")
-    public ResponseEntity<Page<Company>> getAll(Pageable pageable) {
-        return ResponseEntity.ok(this.companyRepository.findAll(pageable));
-    }
+//    public ResponseEntity<Company> getCompanyById(@PathVariable Long id){
+//        Optional<Company> optionalCompany = this.companyRepository.findById(id);
+//        return ResponseEntity.ok(optionalCompany.get());
+//    }
+//
+//
+//    @GetMapping("/companies")
+//    public ResponseEntity<Page<Company>> getAll(Pageable pageable) {
+//        return ResponseEntity.ok(this.companyRepository.findAll(pageable));
+//    }
 
 
 }
