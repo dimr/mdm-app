@@ -5,15 +5,16 @@ import com.example.mdm.CompanyService.CompanyService;
 import com.example.mdm.dtos.CompanyDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.util.List;
 import java.util.Optional;
-
-
 
 
 @RestController
@@ -22,21 +23,22 @@ public class CompanyController {
 
     @Autowired
     private final CompanyService companyService;
-    private final CompanyDTO companyDTO;
-    private ModelMapper mapper;
 
 
-    public CompanyController(CompanyService companyService,CompanyDTO companyDTO){
-        this.companyService=companyService;
-        this.companyDTO = companyDTO;
-        this.mapper = new ModelMapper();
-        this.mapper.map(companyService,companyDTO);
+    public CompanyController(CompanyService companyService) {
+        this.companyService = companyService;
 
+
+    }
+
+    @GetMapping("/companies")
+    public List<CompanyDTO> getAllCompanies(){
+        return companyService.findAllCompanies();
     }
 
 
     @GetMapping("companies/{id}")
-    public Optional<Company> getCompany(@PathVariable Long id){
+    public Optional<Company> getCompany(@PathVariable Long id) {
         return this.companyService.findCompanyById(id);
     }
 

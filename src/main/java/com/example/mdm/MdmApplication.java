@@ -8,10 +8,15 @@ import com.example.mdm.models.Employee;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class MdmApplication {
-
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper;
+    }
     public static void main(String[] args) {
         SpringApplication.run(MdmApplication.class, args);
         Employee employee1 = new Employee("the_employee");
