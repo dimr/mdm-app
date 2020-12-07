@@ -33,4 +33,10 @@ public class DeviceController {
     public ResponseEntity<String> deleteDevice(@PathVariable("id") Long id){
         return deviceService.deleteDevice(id);
     }
+
+    @GetMapping("/devices/devices_by_employee/{employee_id}")
+    public ResponseEntity<Page<DeviceDTO>> getDevicesByEmployeeId(@PathVariable("employee_id") Long employee_id){
+        return deviceService.findDeviceByEmployeeId(employee_id);
+    }
+
 }

@@ -55,6 +55,12 @@ public class DeviceService {
         return ResponseEntity.ok("Device Deleted");
     }
 
+    public ResponseEntity<Page<DeviceDTO>> findDeviceByEmployeeId(Long employeeId){
+        List<Device> devices = deviceRepository.findDeviceByEmployeeId(employeeId);
+        Page<DeviceDTO> deviceDTOS=new PageImpl(devices);
+        return ResponseEntity.ok(deviceDTOS);
+    }
+
 
 
 }
