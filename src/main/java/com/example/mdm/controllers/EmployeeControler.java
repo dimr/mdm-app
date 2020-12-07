@@ -1,7 +1,7 @@
 package com.example.mdm.controllers;
 
 import com.example.mdm.models.Employee;
-import com.example.mdm.models.EmployeeRepository;
+import com.example.mdm.repositories.EmployeeRepository;
 import com.example.mdm.repositories.DeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
