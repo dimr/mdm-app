@@ -32,7 +32,7 @@ public class CompanyController {
     }
 
     @GetMapping("/companies")
-    public List<CompanyDTO> getAllCompanies(){
+    public ResponseEntity<Page<CompanyDTO>> getAllCompanies(){
         return companyService.findAllCompanies();
     }
 

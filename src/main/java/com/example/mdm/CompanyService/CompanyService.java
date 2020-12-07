@@ -6,6 +6,9 @@ import com.example.mdm.models.CompanyRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +28,10 @@ public class CompanyService {
         this.mapper = mapper;
     }
 
-        public List<CompanyDTO> findAllCompanies(){
+        public ResponseEntity<Page<CompanyDTO>> findAllCompanies(){
         List<Company> companies = this.companyRepository.findAll();
-        return mapper.map(companies,new TypeToken<List<CompanyDTO>>(){}.getType());
+//        mapper.map(companies,new TypeToken<List<CompanyDTO>>(){}.getType());
+        return ResponseEntity.ok(new PageImpl<>(mapper.map(companies,new TypeToken<List<CompanyDTO>>(){}.getType())));
 
     }
     public Optional<Company> findCompanyById(Long id){
