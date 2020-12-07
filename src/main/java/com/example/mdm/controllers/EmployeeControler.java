@@ -29,10 +29,10 @@ public class EmployeeControler {
         return employeeService.findEmployeeById(id);
     }
 
-//    @PostMapping("/employees")
-//    Employee newEmployee(@RequestBody Employee newEmployee) {
-//        return employeeRepository.save(newEmployee);
-//    }
+    @GetMapping("/employees")
+    public ResponseEntity<Page<EmployeeDTO>> getAllEmployees( Employee newEmployee) {
+        return employeeService.findAllEmployees();
+    }
 //
 //    @GetMapping("/employees")
 //    public ResponseEntity<Page<Employee>> getAll(Pageable pageable) {
