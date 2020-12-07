@@ -1,9 +1,12 @@
 package com.example.mdm.controllers;
 
 
+import com.example.mdm.dtos.DeviceDTO;
 import com.example.mdm.models.Device;
 import com.example.mdm.models.EmployeeRepository;
 import com.example.mdm.repositories.DeviceRepository;
+import com.example.mdm.services.DeviceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -18,25 +21,20 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class DeviceController {
 
-    private final EmployeeRepository employeeRepository;
-    private final DeviceRepository deviceRepository;
+    @Autowired
+    private DeviceService deviceService;
 
-    public DeviceController(EmployeeRepository employeeRepository, DeviceRepository deviceRepository) {
-        this.employeeRepository = employeeRepository;
-        this.deviceRepository = deviceRepository;
+    public DeviceController(DeviceService deviceService){
+        this.deviceService=deviceService;
     }
 
-    @GetMapping("/devices")
-    public ResponseEntity<Page<Device>> getAll(Pageable page){
-        return ResponseEntity.ok(this.deviceRepository.findAll(page));
-    }
+//    @GetMapping("/devices")
+//    public ResponseEntity<Page<Device>> getAll(Pageable page){
+//        return ResponseEntity.ok(this.deviceRepository.findAll(page));
+//    }
 
     @GetMapping("/devices/{id}")
-    public ResponseEntity<Device> getById(@PathVariable Long id){
-        Optional <Device> optionalDevice = this.deviceRepository.findById(id);
-        if (!optionalDevice.isPresent()){
-            return ResponseEntity.unprocessableEntity().build();
-        }
-        return ResponseEntity.ok(optionalDevice.get());
+    public ResponseEntity<DeviceDTO> getById(@PathVariable Long id){
+        return this.deviceService.findDeviceById(id);
     }
 }
