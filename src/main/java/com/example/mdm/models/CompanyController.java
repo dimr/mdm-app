@@ -1,7 +1,7 @@
 package com.example.mdm.models;
 
 
-import com.example.mdm.CompanyService.CompanyService;
+import com.example.mdm.services.CompanyService;
 import com.example.mdm.dtos.CompanyDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

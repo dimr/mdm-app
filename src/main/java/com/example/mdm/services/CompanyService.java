@@ -1,4 +1,4 @@
-package com.example.mdm.CompanyService;
+package com.example.mdm.services;
 
 import com.example.mdm.dtos.CompanyDTO;
 import com.example.mdm.models.Company;
