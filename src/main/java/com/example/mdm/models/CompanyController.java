@@ -37,9 +37,9 @@ public class CompanyController {
     }
 
 
-    @GetMapping("companies/{id}")
-    public Optional<Company> getCompany(@PathVariable Long id) {
-        return this.companyService.findCompanyById(id);
+    @GetMapping("companies/{name}")
+    public ResponseEntity<CompanyDTO> getCompany(@PathVariable String name) {
+        return this.companyService.findCompanyByName(name);
     }
 
 //    public ResponseEntity<Company> getCompanyById(@PathVariable Long id){
