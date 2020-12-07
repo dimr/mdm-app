@@ -4,6 +4,7 @@ package com.example.mdm.controllers;
 import com.example.mdm.dtos.DeviceDTO;
 import com.example.mdm.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +22,10 @@ public class DeviceController {
         this.deviceService=deviceService;
     }
 
-//    @GetMapping("/devices")
-//    public ResponseEntity<Page<Device>> getAll(Pageable page){
-//        return ResponseEntity.ok(this.deviceRepository.findAll(page));
-//    }
+    @GetMapping("/devices")
+    public ResponseEntity<Page<DeviceDTO>> getAll(){
+        return this.deviceService.findAllDevices();
+    }
 
     @GetMapping("/devices/{id}")
     public ResponseEntity<DeviceDTO> getById(@PathVariable Long id){
