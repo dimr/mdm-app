@@ -1,6 +1,9 @@
 package com.example.mdm.dtos;
 
+import com.example.mdm.models.Device;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class EmployeeDTO {
@@ -9,6 +12,7 @@ public class EmployeeDTO {
     private String email;
     private CompanyDTO company;
     private String companyName;
+    private List<Device> devices;
 
     public Long getId() {
         return id;
@@ -48,5 +52,13 @@ public class EmployeeDTO {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
     }
 }

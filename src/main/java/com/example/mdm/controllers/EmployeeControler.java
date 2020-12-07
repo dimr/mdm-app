@@ -1,8 +1,10 @@
 package com.example.mdm.controllers;
 
+import com.example.mdm.dtos.EmployeeDTO;
 import com.example.mdm.models.Employee;
 import com.example.mdm.repositories.EmployeeRepository;
 import com.example.mdm.repositories.DeviceRepository;
+import com.example.mdm.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,33 +16,26 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class EmployeeControler {
-    private final EmployeeRepository employeeRepository;
-    private final DeviceRepository deviceRepository;
-
-
     @Autowired
-    public EmployeeControler(EmployeeRepository employeeRepository, DeviceRepository deviceRepository) {
-        this.employeeRepository = employeeRepository;
-        this.deviceRepository = deviceRepository;
+    private EmployeeService employeeService;
+
+    public EmployeeControler(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     // in post request bind @RequestParam Annotation, read form data and bind parameter
     @GetMapping("employees/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-        Optional<Employee> optionalEmployee = this.employeeRepository.findById(id);
-        if (!optionalEmployee.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-        return ResponseEntity.ok(optionalEmployee.get());
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
+        return employeeService.findEmployeeById(id);
     }
 
-    @PostMapping("/employees")
-    Employee newEmployee(@RequestBody Employee newEmployee) {
-        return employeeRepository.save(newEmployee);
-    }
-
-    @GetMapping("/employees")
-    public ResponseEntity<Page<Employee>> getAll(Pageable pageable) {
-        return ResponseEntity.ok(this.employeeRepository.findAll(pageable));
-    }
+//    @PostMapping("/employees")
+//    Employee newEmployee(@RequestBody Employee newEmployee) {
+//        return employeeRepository.save(newEmployee);
+//    }
+//
+//    @GetMapping("/employees")
+//    public ResponseEntity<Page<Employee>> getAll(Pageable pageable) {
+//        return ResponseEntity.ok(this.employeeRepository.findAll(pageable));
+//    }
 }
