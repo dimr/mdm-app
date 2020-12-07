@@ -3,6 +3,7 @@ package com.example.mdm.services;
 import com.example.mdm.dtos.CompanyDTO;
 import com.example.mdm.dtos.DeviceDTO;
 import com.example.mdm.models.Device;
+import com.example.mdm.models.Employee;
 import com.example.mdm.repositories.DeviceRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -42,6 +43,16 @@ public class DeviceService {
         return ResponseEntity.ok(new PageImpl<>(mapper.map(devices, new TypeToken<List<DeviceDTO>>() {
         }.getType())));
 
+    }
+
+//    public ResponseEntity<DeviceDTO> saveDevice(DeviceDTO deviceDTO){
+//        Device device;
+//
+//    }
+    public ResponseEntity<String> deleteDevice(Long id){
+        Device device = deviceRepository.findDeviceById(id);
+        deviceRepository.delete(device);
+        return ResponseEntity.ok("Device Deleted");
     }
 
 
