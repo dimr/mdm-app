@@ -1,13 +1,14 @@
-package com.example.mdm.models;
+package com.example.mdm.controllers;
 
+import com.example.mdm.models.Employee;
+import com.example.mdm.models.EmployeeRepository;
+import com.example.mdm.repositories.DeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServlet;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

@@ -2,7 +2,6 @@ package com.example.mdm;
 
 import com.example.mdm.dtos.CompanyDTO;
 import com.example.mdm.models.Company;
-import com.example.mdm.models.CompanyRepository;
 import com.example.mdm.models.Device;
 import com.example.mdm.models.Employee;
 import org.modelmapper.ModelMapper;

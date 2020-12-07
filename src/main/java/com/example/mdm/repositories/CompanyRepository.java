@@ -1,5 +1,6 @@
-package com.example.mdm.models;
+package com.example.mdm.repositories;
 
+import com.example.mdm.models.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,9 @@
-package com.example.mdm.models;
+package com.example.mdm.controllers;
 
 
+import com.example.mdm.models.Device;
+import com.example.mdm.models.EmployeeRepository;
+import com.example.mdm.repositories.DeviceRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

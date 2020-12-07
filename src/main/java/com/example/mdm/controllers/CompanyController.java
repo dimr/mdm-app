@@ -1,4 +1,4 @@
-package com.example.mdm.models;
+package com.example.mdm.controllers;
 
 
 import com.example.mdm.services.CompanyService;
