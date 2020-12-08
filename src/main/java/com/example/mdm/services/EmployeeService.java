@@ -53,9 +53,14 @@ public class EmployeeService {
         return companyDTO;
     }
 
+    public Employee convertToEntity(EmployeeDTO employeeDTO){
+        Employee employee = mappper.map(employeeDTO,Employee.class);
+        return employee;
+    }
     public ResponseEntity<EmployeeDTO> saveOrUpdateEmployee(EmployeeDTO employeeDTO){
         boolean exists = employeeDTO.getId()!=null;
-        System.out.println("SEND: "+employeeDTO.toString());
+        System.out.println("SEND----------->: "+employeeDTO.getCompanyName()
+        );
         if (exists){
             Optional<Employee> employee = employeeRepository.findById(8L);
             Employee updatedEmployee;
@@ -72,8 +77,18 @@ public class EmployeeService {
             return ResponseEntity.ok(employeeDTO);
 
         }
-        System.out.println("ERROR");
-        return ResponseEntity.ok(employeeDTO);
+        else{
+            System.out.println("NEW EMPLOYEEE");
+            Company company = companyRepository.findByName(employeeDTO.getCompanyName());
+            System.out.println("COMPANY"+ company.getId());
+            Employee newEmployee = convertToEntity(employeeDTO);
+            newEmployee.setCompany(company);
+            employeeRepository.save(newEmployee);
+
+            return ResponseEntity.ok(employeeDTO);
+        }
+//        System.out.println("ERROR");
+//        return ResponseEntity.ok(employeeDTO);
     }
 
     public ResponseEntity<String> deleteEmployee(Long id){
