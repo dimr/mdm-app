@@ -33,9 +33,9 @@ public class MdmApplication {
         CompanyDTO companyDTO = new CompanyDTO();
         ModelMapper mapper = new ModelMapper();
         mapper.map(company,companyDTO);
-        System.out.println(companyDTO.getName());
-        System.out.println(companyDTO.testFunction());
-        System.out.println(companyDTO);
+//        System.out.println(companyDTO.getName());
+//        System.out.println(companyDTO.testFunction());
+//        System.out.println(companyDTO);
     }
 
 }

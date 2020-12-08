@@ -42,4 +42,18 @@ public class EmployeeService {
         return ResponseEntity.ok(new PageImpl<>(this.mappper.map(employees, new TypeToken<List<EmployeeDTO>>() {
         }.getType())));
     }
+
+    public ResponseEntity<EmployeeDTO> saveOrUpdateEmployee(EmployeeDTO employeeDTO){
+        boolean exists = employeeDTO.getId()!=null;
+        System.out.println("SEND: "+employeeDTO.toString());
+        if (exists){
+            Optional<Employee> employee = employeeRepository.findById(new Long(8));
+            mappper.map(employee.get(),EmployeeDTO.class);
+            employeeRepository.save(employee.get());
+            return ResponseEntity.ok(employeeDTO);
+
+        }
+        System.out.println("ERROR");
+        return ResponseEntity.ok(employeeDTO);
+    }
 }

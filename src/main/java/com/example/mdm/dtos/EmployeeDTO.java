@@ -54,6 +54,18 @@ public class EmployeeDTO {
         this.companyName = companyName;
     }
 
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", company=" + company +
+                ", companyName='" + companyName + '\'' +
+                ", devices=" + devices +
+                '}';
+    }
+
     public List<Device> getDevices() {
         return devices;
     }

@@ -33,6 +33,12 @@ public class EmployeeControler {
     public ResponseEntity<Page<EmployeeDTO>> getAllEmployees( Employee newEmployee) {
         return employeeService.findAllEmployees();
     }
+
+    @PostMapping("/employee")
+    public ResponseEntity<EmployeeDTO> saveOrUpdateEmployee(@RequestBody EmployeeDTO employeeDTO)
+    {
+        return employeeService.saveOrUpdateEmployee(employeeDTO);
+    }
 //
 //    @GetMapping("/employees")
 //    public ResponseEntity<Page<Employee>> getAll(Pageable pageable) {
