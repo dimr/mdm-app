@@ -16,9 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -81,7 +83,6 @@ public class EmployeeService {
         else{
             System.out.println("NEW EMPLOYEEE");
             Company company = companyRepository.findByName(employeeDTO.getCompanyName());
-            System.out.println("COMPANY"+ company.getId());
             Employee newEmployee = convertToEntity(employeeDTO);
             newEmployee.setCompany(company);
             employeeRepository.save(newEmployee);
@@ -97,5 +98,17 @@ public class EmployeeService {
         employeeRepository.delete(employee);
         return ResponseEntity.ok(String.format("Deleted employee with id = %s",id));
 
+    }
+
+    private EmployeeDTO employeeDTO(Employee employee){
+        EmployeeDTO employeeDTO = mappper.map(employee,EmployeeDTO.class);
+        return employeeDTO;
+    }
+
+
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesByCompanyName(String conpanyName){
+        List<Employee> employees = employeeRepository.findEmployeeByCompanyName(conpanyName);
+        List<EmployeeDTO> employeeDTOS = employees.stream().map(this::employeeDTO).collect(Collectors.toList());
+        return ResponseEntity.ok(employeeDTOS);
     }
 }

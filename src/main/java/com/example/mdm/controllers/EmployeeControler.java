@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
+import java.util.List;
 
 
 @RestController
@@ -59,6 +60,11 @@ public class EmployeeControler {
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<String> deleteEmployeById(@PathVariable Long id){
         return employeeService.deleteEmployee(id);
+    }
+
+    @GetMapping("/employees/test/{companyName}")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesByCompanyName(@PathVariable String companyName){
+        return employeeService.getEmployeesByCompanyName(companyName);
     }
 //
 //    @GetMapping("/employees")
