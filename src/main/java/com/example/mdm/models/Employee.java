@@ -43,6 +43,14 @@ public class Employee {
         return company;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setCompany(Company company) {
         this.company = company;
     }
