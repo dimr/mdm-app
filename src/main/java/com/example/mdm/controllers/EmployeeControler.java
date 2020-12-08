@@ -6,6 +6,7 @@ import com.example.mdm.repositories.EmployeeRepository;
 import com.example.mdm.repositories.DeviceRepository;
 import com.example.mdm.services.EmployeeService;
 import lombok.extern.java.Log;
+import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.ConstraintViolationException;
 
 
 @RestController
@@ -29,6 +32,11 @@ public class EmployeeControler {
     public String handlerErrors(DataIntegrityViolationException e){
         return "Duplicate email" + e.getCause().toString();
     }
+
+//    @ExceptionHandler(Exception.class)
+//    public String handlerErrors(JDBCException e){
+//        return "Duplicate email" + e.getCause().toString()+" ";
+//    }
 
 
     // in post request bind @RequestParam Annotation, read form data and bind parameter

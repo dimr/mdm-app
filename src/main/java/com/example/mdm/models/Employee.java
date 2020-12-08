@@ -3,6 +3,7 @@ package com.example.mdm.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,6 +31,7 @@ public class Employee {
     private Long id;
 
     private String name;
+    @Email(message = "Not a valid email")
     private String email;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
