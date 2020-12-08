@@ -10,15 +10,18 @@ import java.util.List;
 @Entity
 @Table(name="companies",schema="public")
 public class Company {
+    public Company(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String address;
 
     public  Company(){}
-    public Company(String name) {
-        this.name = name;
-    }
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH}, mappedBy = "company")
