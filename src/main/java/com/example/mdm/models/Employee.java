@@ -10,6 +10,21 @@ import java.util.Set;
 @Entity
 @Table(name = "employees")
 public class Employee {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", devices=" + devices +
+                ", company=" + company +
+                '}';
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)// because of postgresql
     private Long id;

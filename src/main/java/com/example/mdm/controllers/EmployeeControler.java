@@ -39,6 +39,11 @@ public class EmployeeControler {
     {
         return employeeService.saveOrUpdateEmployee(employeeDTO);
     }
+
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<String> deleteEmployeById(@PathVariable Long id){
+        return employeeService.deleteEmployee(id);
+    }
 //
 //    @GetMapping("/employees")
 //    public ResponseEntity<Page<Employee>> getAll(Pageable pageable) {

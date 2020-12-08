@@ -75,4 +75,11 @@ public class EmployeeService {
         System.out.println("ERROR");
         return ResponseEntity.ok(employeeDTO);
     }
+
+    public ResponseEntity<String> deleteEmployee(Long id){
+        Employee employee = employeeRepository.findEmployeeById(id);
+        employeeRepository.delete(employee);
+        return ResponseEntity.ok(String.format("Deleted employee with id = %s",id));
+
+    }
 }
