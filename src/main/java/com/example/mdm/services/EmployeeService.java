@@ -41,7 +41,10 @@ public class EmployeeService {
         if (!optionalEmployee.isPresent()){
             return ResponseEntity.unprocessableEntity().build();
         }
-        return ResponseEntity.ok(mappper.map(optionalEmployee.get(),EmployeeDTO.class));
+        // calculate the number of devices here and insert into EmployeeDTO
+        EmployeeDTO employeeDTO = mappper.map(optionalEmployee.get(),EmployeeDTO.class);
+        employeeDTO.setNumberOfDevices(optionalEmployee.get().getDevices().size());
+        return ResponseEntity.ok(employeeDTO);
     }
 
     public ResponseEntity<Page<EmployeeDTO>> findAllEmployees(){

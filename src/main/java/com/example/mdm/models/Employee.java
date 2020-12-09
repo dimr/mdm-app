@@ -44,6 +44,16 @@ public class Employee {
     @JsonIgnore
     private Company company;
 
+    public int getNumberOfDevices() {
+        return numberOfDevices;
+    }
+
+    public void setNumberOfDevices(int numberOfDevices) {
+        this.numberOfDevices = numberOfDevices;
+    }
+
+    @Transient
+    private int numberOfDevices;
     public Employee() {
     }
 

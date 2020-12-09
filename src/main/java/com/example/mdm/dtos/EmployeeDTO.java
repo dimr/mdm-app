@@ -13,6 +13,16 @@ public class EmployeeDTO {
     private CompanyDTO company;
     private String companyName;
     private List<Device> devices;
+    private int numberOfDevices;
+
+    public int getNumberOfDevices() {
+//        setNumberOfDevices(this.devices.size());
+        return numberOfDevices;
+    }
+
+    public void setNumberOfDevices(int numberOfDevices) {
+        this.numberOfDevices = numberOfDevices;
+    }
 
     public Long getId() {
         return id;
