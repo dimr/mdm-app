@@ -5,6 +5,7 @@ import com.example.mdm.dtos.DeviceDTO;
 import com.example.mdm.models.Device;
 import com.example.mdm.models.Employee;
 import com.example.mdm.repositories.DeviceRepository;
+import com.example.mdm.repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ public class DeviceService {
     private final DeviceRepository deviceRepository;
     private final ModelMapper mapper;
     private final DeviceDTO deviceDTO;
+    private final EmployeeRepository employeeRepository;
 
     @Autowired
-    public DeviceService(DeviceRepository deviceRepository,ModelMapper modelMapper,DeviceDTO deviceDTO){
+    public DeviceService(DeviceRepository deviceRepository,ModelMapper modelMapper,DeviceDTO deviceDTO, EmployeeRepository employeeRepository){
         this.deviceRepository=deviceRepository;
         this.mapper=modelMapper;
         this.deviceDTO=deviceDTO;
+        this.employeeRepository = employeeRepository;
     }
 
 
@@ -62,5 +65,30 @@ public class DeviceService {
     }
 
 
+    public ResponseEntity<DeviceDTO> saveUpdateDevice(DeviceDTO deviceDTO){
+        Device newDevice;
+        System.out.println("_------------------------------"+deviceDTO);
+        Employee employee = employeeRepository.findEmployeeById((long) deviceDTO.getEmployee_id());
+        System.out.println("DEFORE ENTER.............."+deviceDTO.getId());
+        if (deviceDTO.getSerial_number()!=null){
+            System.out.println("ENTERED.............."+employee);
+//            newDevice= deviceRepository.findDeviceById((long) deviceDTO.getId());
+            //map from DeviceDTO to device and save the device
+            newDevice = mapper.map(deviceDTO,Device.class);
+            System.out.println("INITIAL NEW DEVICE"+" "+deviceDTO.getId()+deviceDTO.getEmployee_id());
 
+//            newDevice.setEmployee(employee);
+            newDevice.setEmployee_id(employee.getId());
+            newDevice.setEmployee(employee);
+            DeviceDTO deviceDTO1 = mapper.map(newDevice,DeviceDTO.class);
+            deviceRepository.save(newDevice);
+            System.out.println("DEVICE ENTITY "+newDevice.toString());
+            System.out.println("DEVICE DTO "+deviceDTO.toString());
+            System.out.println("NEW DEVICE "+ newDevice.toString());
+            System.out.println("NEW DTO "+ deviceDTO.toString());
+            return ResponseEntity.ok(mapper.map(newDevice,DeviceDTO.class));
+        }
+        System.out.println("OUT HERER------------------");
+        return ResponseEntity.ok(deviceDTO);
+    }
 }
