@@ -70,7 +70,7 @@ public class DeviceService {
         System.out.println("_------------------------------"+deviceDTO);
         Employee employee = employeeRepository.findEmployeeById((long) deviceDTO.getEmployee_id());
         System.out.println("DEFORE ENTER.............."+deviceDTO.getId());
-        if (deviceDTO.getSerial_number()!=null){
+        if (deviceDTO.getId()==null){
             System.out.println("ENTERED.............."+employee);
 //            newDevice= deviceRepository.findDeviceById((long) deviceDTO.getId());
             //map from DeviceDTO to device and save the device
@@ -87,6 +87,17 @@ public class DeviceService {
             System.out.println("NEW DEVICE "+ newDevice.toString());
             System.out.println("NEW DTO "+ deviceDTO.toString());
             return ResponseEntity.ok(mapper.map(newDevice,DeviceDTO.class));
+        }
+        else{
+
+            newDevice=deviceRepository.findDeviceById(deviceDTO.getId());
+            System.out.println("FOUND DEVICE TO CHAGE: "+newDevice);
+//            mapper.map(deviceDTO,Device.class);
+//            System.out.println("NEW DEVIDE ->"+newDevice);
+//            newDevice.setSerial_number(deviceDTO.getSerial_number());
+//            newDevice.setSerial_number(deviceDTO.getSerial_number());
+
+            deviceRepository.save(mapper.map(deviceDTO,Device.class));
         }
         System.out.println("OUT HERER------------------");
         return ResponseEntity.ok(deviceDTO);
