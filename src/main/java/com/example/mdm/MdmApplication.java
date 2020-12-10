@@ -1,6 +1,7 @@
 package com.example.mdm;
 
 import com.example.mdm.dtos.CompanyDTO;
+import com.example.mdm.dtos.DeviceDTO;
 import com.example.mdm.models.Company;
 import com.example.mdm.models.Device;
 import com.example.mdm.models.Employee;
@@ -20,11 +21,18 @@ public class MdmApplication {
     }
     public static void main(String[] args) {
         SpringApplication.run(MdmApplication.class, args);
-        Employee employee1 = new Employee("the_employee");
-        employee1.setId(100L);
-        System.out.println(employee1.toString());
-        String message = String.format("Deleted employee with id = %s",employee1.getId());
-        System.out.println(message);
+//        DeviceDTO deviceDTO = new DeviceDTO();
+//        deviceDTO.setId(1L);
+//        deviceDTO.setType("mobile");
+//        deviceDTO.setSerial_number("gsdgsd");
+//
+//        deviceDTO.setEmployee(new Employee("dimitrs"));
+//        System.out.println(deviceDTO)
+        Device device = new Device();
+        device.setEmployee_id(10);
+        device.setType("mobile");
+
+        System.out.println(device.toString());
 //        System.out.println(companyDTO.getName());
 //        System.out.println(companyDTO.testFunction());
 //        System.out.println(companyDTO);

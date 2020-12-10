@@ -12,16 +12,27 @@ import javax.persistence.*;
 @Table(name = "devices")
 public class Device {
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     private String serial_number;
     private String type;
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,
             CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, optional = false)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id",referencedColumnName = "id")
     @JsonIgnore
     private Employee employee;
+
+    @Column(name="employee_id",insertable = false, updatable = false)
+    private long employee_id;
+
+    public long getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(long employee_id) {
+        this.employee_id = employee_id;
+    }
 
     public Device(String serialId, Employee employee) {
         this.serial_number = serialId;
@@ -59,7 +70,8 @@ public class Device {
                 "id=" + id +
                 ", serial_number='" + serial_number + '\'' +
                 ", type='" + type + '\'' +
-                ", employee=" + employee +
+//                ", employee=" + employee +
+                ", employee_id=" + employee_id +
                 '}';
     }
 

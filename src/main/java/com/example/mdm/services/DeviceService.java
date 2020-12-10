@@ -89,14 +89,15 @@ public class DeviceService {
             return ResponseEntity.ok(mapper.map(newDevice,DeviceDTO.class));
         }
         else{
-
+            System.out.println("DEVICE DTO:"+ deviceDTO);
             newDevice=deviceRepository.findDeviceById(deviceDTO.getId());
+//            newDevice.setEmployee_id();
             System.out.println("FOUND DEVICE TO CHAGE: "+newDevice);
 //            mapper.map(deviceDTO,Device.class);
 //            System.out.println("NEW DEVIDE ->"+newDevice);
 //            newDevice.setSerial_number(deviceDTO.getSerial_number());
 //            newDevice.setSerial_number(deviceDTO.getSerial_number());
-
+            System.out.println("WHAT THE FUCTK "+mapper.map(deviceDTO,Device.class));
             deviceRepository.save(mapper.map(deviceDTO,Device.class));
         }
         System.out.println("OUT HERER------------------");

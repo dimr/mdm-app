@@ -2,6 +2,7 @@ package com.example.mdm.controllers;
 
 
 import com.example.mdm.dtos.DeviceDTO;
+import com.example.mdm.models.Device;
 import com.example.mdm.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,4 +40,9 @@ public class DeviceController {
         return deviceService.findDeviceByEmployeeId(employee_id);
     }
 
+    //#TODO fix this
+    @PostMapping("/devices")
+    public ResponseEntity<DeviceDTO> saveOrUpdateDevice(@RequestBody DeviceDTO deviceDTO){
+        return deviceService.saveUpdateDevice(deviceDTO);
+    }
 }
