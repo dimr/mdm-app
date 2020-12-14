@@ -98,7 +98,11 @@ public class DeviceService {
 //            newDevice.setSerial_number(deviceDTO.getSerial_number());
 //            newDevice.setSerial_number(deviceDTO.getSerial_number());
             System.out.println("WHAT THE FUCTK "+mapper.map(deviceDTO,Device.class));
-            deviceRepository.save(mapper.map(deviceDTO,Device.class));
+//            deviceRepository.save(mapper.map(deviceDTO,Device.class));
+            newDevice.setEmployee_id(deviceDTO.getEmployee_id());
+            newDevice.setSerial_number(deviceDTO.getSerial_number());
+            newDevice.setType(deviceDTO.getType());
+            deviceRepository.save(newDevice);
         }
         System.out.println("OUT HERER------------------");
         return ResponseEntity.ok(deviceDTO);

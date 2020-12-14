@@ -5,9 +5,13 @@ import com.example.mdm.dtos.DeviceDTO;
 import com.example.mdm.models.Device;
 import com.example.mdm.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api")
@@ -15,6 +19,14 @@ public class DeviceController {
 
     @Autowired
     private DeviceService deviceService;
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public String handlerErrors(DataIntegrityViolationException e){
+//        #TODO RestControllerAdvice
+        return "Duplicate serial number" + e.getCause().toString();
+    }
 
     public DeviceController(DeviceService deviceService){
         this.deviceService=deviceService;
