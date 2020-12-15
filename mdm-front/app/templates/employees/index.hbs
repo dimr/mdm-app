@@ -1,0 +1,12 @@
+{{outlet}}
+{{this.model}}
+<h1>from index.html file</h1>
+{{#each element in model}}
+  {{element}}
+{{/each}}
+<ul>
+  {{#each @model as |employee|}}
+    <li>{{employee.id}} || >>{{employee.name}} ----{{employee.email}}-------  {{employee.devices}}  ------ {{employee.company.name}} </li>
+  {{/each}}
+
+</ul>

@@ -20,7 +20,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 public class EmployeeControler {
     @Autowired
     private EmployeeService employeeService;
@@ -41,11 +41,12 @@ public class EmployeeControler {
 
 
     // in post request bind @RequestParam Annotation, read form data and bind parameter
+    @CrossOrigin
     @GetMapping("employees/{id}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
         return employeeService.findEmployeeById(id);
     }
-
+    @CrossOrigin
     @GetMapping("/employees")
     public ResponseEntity<Page<EmployeeDTO>> getAllEmployees( Employee newEmployee) {
         return employeeService.findAllEmployees();
