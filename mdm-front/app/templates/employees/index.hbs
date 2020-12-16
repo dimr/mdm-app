@@ -6,7 +6,14 @@
 {{/each}}
 <ul>
   {{#each @model as |employee|}}
-    <li>{{employee.id}} || >>{{employee.name}} ----{{employee.email}}-------  {{employee.devices}}  ------ {{employee.company.name}} </li>
+    <li>{{employee.id}} || >>{{employee.name}} ----{{employee.email}}-------
+      {{employee.devices}}  ------ {{employee.company.name}}
+<!--      <a href="http://localhost:4200/employees/{{employee.id}}"> view</a>-->
+      <LinkTo @route="employees.employee" @model={{employee.id}}>
+        View
+      </LinkTo>
+
+    </li>
   {{/each}}
 
 </ul>
