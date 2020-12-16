@@ -1,0 +1,8 @@
+{{outlet}}
+
+
+<ul>
+  {{#each @model as |device|}}
+    <li>{{device.id}} || {{device.type}} || {{device.serial_number}}</li>
+  {{/each}}
+</ul>
