@@ -44,6 +44,7 @@ public class EmployeeControler {
     @CrossOrigin
     @GetMapping("employees/{id}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
+        System.out.println("GETTING EMPLOYEE  "+id);
         return employeeService.findEmployeeById(id);
     }
     @CrossOrigin
