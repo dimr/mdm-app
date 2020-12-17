@@ -1,16 +1,20 @@
-<h1>EDIT EMPLOYEE >> {{this.model.name}} {{test}}<<</h1>
-{{@test}}
-<form>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <Input @type="text" class="form-control" @id="name" @value={{@name}} />
-  </div>
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <Input @type="text" class="form-control" @id="email"  @value={{@email}} />
-  </div>
-  <button {{action "addEmployee" @model}} type="submit">
-    Send
-  </button>
-</form>
-{{yield}}
+<!--<h1>EDIT EMPLOYEE >> {{this.model.name}} <<</h1>-->
+<!--{{@test}}---{{@model.name}}-->
+<!--<form>-->
+<!--  <div class="form-group">-->
+<!--    <label for="name">Name</label>-->
+<!--    <Input @type="text" class="form-control" @id="name" @value={{@model.name}} />-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="email">Email address</label>-->
+<!--    <Input @type="text" class="form-control" @id="email"  @value={{@model.email}} />-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="company">Company name</label>-->
+<!--    <Input @type="text" class="form-control" @id="company.name"  @value={{@model.company}} />-->
+<!--  </div>-->
+<!--  <button {{action "addEmployee" @model}} type="submit">-->
+<!--    Send-->
+<!--  </button>-->
+<!--</form>-->
+<!--{{yield}}-->

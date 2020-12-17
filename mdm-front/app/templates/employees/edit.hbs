@@ -1,7 +1,23 @@
 <!--{{outlet}}-->
 <h1>EDIT dsafs</h1>
-{{this.model.name}}
+{{this.model.name}} {{this.model.id}} {{this.model.company.name}}
 
 <!--<EditEmployee test="test" />-->
 
-{{ edit-employee name=this.model.name email=this.model.email }}
+<form>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <Input @type="text" class="form-control" @id="name" @value={{@model.name}} />
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <Input @type="text" class="form-control" @id="email"  @value={{@model.email}} />
+  </div>
+  <div class="form-group">
+    <label for="company">Company name</label>
+    <Input @type="text" class="form-control" @id="company.name"  @value={{@model.company.name}} />
+  </div>
+  <button {{action "edit_employee" @model}} type="submit">
+    Send
+  </button>
+</form>
