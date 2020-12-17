@@ -1,8 +1,23 @@
 {{outlet}}
 
+<h1 class="text-center">Devices</h1>
 
-<ul>
-  {{#each @model as |device|}}
-    <li>{{device.id}} || {{device.type}} || {{device.serial_number}}</li>
-  {{/each}}
-</ul>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">type</th>
+    <th scope="col">serial number</th>
+  </tr>
+  </thead>
+    {{#each @model as |device|}}
+      <tr>
+        <td>{{device.id}}</td>
+        <td>{{device.type}}</td>
+        <td>{{device.serial_number}}</td>
+      </tr>
+    {{/each}}
+    <!--    <th scope="col">devices</th>-->
+
+
+</table>

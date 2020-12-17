@@ -22,7 +22,7 @@ export default class EmployeeRoute extends Route {
     // var data = $.ajax("employees/")
     // var data= this.get('store').findRecord('employee',params.employee_id);
     // console.log(data)
-    return $.getJSON('/employees/'+params.employee_id).then(data=>{
+    return $.getJSON('/api/employees/'+params.employee_id).then(data=>{
       console.log(data);
       return data;
     })

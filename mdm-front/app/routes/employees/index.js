@@ -9,7 +9,7 @@ export default class IndexRoute extends Route {
    // return Ember.$.ajax("/employees")
    // console.log(response.data);
    //  console.log("Paramgs",params)
-    return $.ajax('/employees').then(data=>{
+    return $.ajax('/api/employees').then(data=>{
       let allData = data.content;
 
       return allData.map(model=>{
