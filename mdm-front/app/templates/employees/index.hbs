@@ -10,6 +10,7 @@
 <!--    <th scope="col">devices</th>-->
     <th scope="col">company</th>
     <th scope="col">View</th>
+    <th scope="col">Edit</th>
   </tr>
   </thead>
   <tbody>
@@ -31,7 +32,11 @@
       <LinkTo @route="employees.employee" @model={{employee.id}}>
         View
       </LinkTo>
-
+      <td>
+      <LinkTo @route="employees.edit" @model={{employee.id}}>
+        Edit
+      </LinkTo>
+      </td>
     </tr>
   {{/each}}
   </tbody>
