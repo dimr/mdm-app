@@ -24,5 +24,6 @@ export default class EmployeesNewRoute extends Route {
     }).fail(function(xhr,status,error){
       console.log(error,status,xhr)
     })
+    this.transitionTo("employees.index")
   }
 }
