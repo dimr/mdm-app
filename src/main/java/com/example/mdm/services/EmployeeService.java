@@ -68,9 +68,9 @@ public class EmployeeService {
         System.out.println("SEND----------->: "+employeeDTO.getCompanyName()
         );
         if (exists){
-            Optional<Employee> employee = employeeRepository.findById(8L);
+            Optional<Employee> employee = employeeRepository.findById(employeeDTO.getId());
             Employee updatedEmployee;
-            Company company=this.companyRepository.findByName("comquent");
+            Company company=this.companyRepository.findByName(employeeDTO.getCompanyName());
 //            this.mappper.map(company,CompanyDTO.class);
 //            employeeDTO.setCompany(new Company(C);
 //            Optional<CompanyDTO> optionalCompany = companyService.findCompanyByName("comquent");

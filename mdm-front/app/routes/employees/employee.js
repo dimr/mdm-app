@@ -43,12 +43,12 @@ export default class EmployeeRoute extends Route {
     console.log(employee)
 
     console.log(window.location)
-    // $.ajax({
-    //   type:"DELETE",
-    //   url:'/api/employees/'+employee.id,
-    //   dataType:'json',
-    //   contentType: "application/json; charset=utf-8",
-    // })
+    $.ajax({
+      type:"DELETE",
+      url:'/api/employees/'+employee.id,
+      dataType:'json',
+      contentType: "application/json; charset=utf-8",
+    })
     this.transitionTo('employees.index');
 
   }
