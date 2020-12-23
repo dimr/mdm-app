@@ -1,11 +1,10 @@
-package com.example.mdm.models;
+package com.management.mdm.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

@@ -1,6 +1,6 @@
-package com.example.mdm.dtos;
+package com.management.mdm.dtos;
 
-import com.example.mdm.models.Device;
+import com.management.mdm.models.Device;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,10 +1,6 @@
-package com.example.mdm;
+package com.management.mdm;
 
-import com.example.mdm.dtos.CompanyDTO;
-import com.example.mdm.dtos.DeviceDTO;
-import com.example.mdm.models.Company;
-import com.example.mdm.models.Device;
-import com.example.mdm.models.Employee;
+import com.management.mdm.models.Device;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.SpringApplication;

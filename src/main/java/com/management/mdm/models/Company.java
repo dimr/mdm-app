@@ -1,6 +1,4 @@
-package com.example.mdm.models;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+package com.management.mdm.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;

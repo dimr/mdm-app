@@ -1,9 +1,7 @@
-package com.example.mdm.models;
+package com.management.mdm.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 

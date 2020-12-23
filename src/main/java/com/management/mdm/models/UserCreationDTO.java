@@ -1,4 +1,4 @@
-package com.example.mdm.models;
+package com.management.mdm.models;
 
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.mdm.controllers;
+package com.management.mdm.controllers;
 
 import org.junit.jupiter.api.Test;
 

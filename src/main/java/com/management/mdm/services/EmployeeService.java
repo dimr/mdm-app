@@ -1,12 +1,11 @@
-package com.example.mdm.services;
+package com.management.mdm.services;
 
-import com.example.mdm.dtos.CompanyDTO;
-import com.example.mdm.dtos.EmployeeDTO;
-import com.example.mdm.models.Company;
-import com.example.mdm.models.Employee;
-import com.example.mdm.repositories.CompanyRepository;
-import com.example.mdm.repositories.EmployeeRepository;
-import com.jayway.jsonpath.JsonPath;
+import com.management.mdm.dtos.CompanyDTO;
+import com.management.mdm.dtos.EmployeeDTO;
+import com.management.mdm.models.Company;
+import com.management.mdm.models.Employee;
+import com.management.mdm.repositories.CompanyRepository;
+import com.management.mdm.repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolationException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 @Service

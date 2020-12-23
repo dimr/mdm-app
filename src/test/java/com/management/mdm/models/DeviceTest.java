@@ -1,4 +1,4 @@
-package com.example.mdm.models;
+package com.management.mdm.models;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

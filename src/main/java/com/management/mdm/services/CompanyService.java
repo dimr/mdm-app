@@ -1,8 +1,8 @@
-package com.example.mdm.services;
+package com.management.mdm.services;
 
-import com.example.mdm.dtos.CompanyDTO;
-import com.example.mdm.models.Company;
-import com.example.mdm.repositories.CompanyRepository;
+import com.management.mdm.dtos.CompanyDTO;
+import com.management.mdm.models.Company;
+import com.management.mdm.repositories.CompanyRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;

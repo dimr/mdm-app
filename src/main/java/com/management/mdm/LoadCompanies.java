@@ -1,8 +1,8 @@
-package com.example.mdm;
+package com.management.mdm;
 
 
-import com.example.mdm.models.Company;
-import com.example.mdm.repositories.CompanyRepository;
+import com.management.mdm.models.Company;
+import com.management.mdm.repositories.CompanyRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

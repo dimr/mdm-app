@@ -1,17 +1,14 @@
-package com.example.mdm.controllers;
+package com.management.mdm.controllers;
 
 
-import com.example.mdm.dtos.DeviceDTO;
-import com.example.mdm.models.Device;
-import com.example.mdm.services.DeviceService;
+import com.management.mdm.dtos.DeviceDTO;
+import com.management.mdm.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api")

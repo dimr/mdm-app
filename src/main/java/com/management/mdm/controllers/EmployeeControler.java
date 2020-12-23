@@ -1,21 +1,14 @@
-package com.example.mdm.controllers;
+package com.management.mdm.controllers;
 
-import com.example.mdm.dtos.EmployeeDTO;
-import com.example.mdm.models.Employee;
-import com.example.mdm.repositories.EmployeeRepository;
-import com.example.mdm.repositories.DeviceRepository;
-import com.example.mdm.services.EmployeeService;
-import lombok.extern.java.Log;
-import org.hibernate.JDBCException;
+import com.management.mdm.dtos.EmployeeDTO;
+import com.management.mdm.models.Employee;
+import com.management.mdm.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 

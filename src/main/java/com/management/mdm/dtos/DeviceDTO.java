@@ -1,7 +1,7 @@
-package com.example.mdm.dtos;
+package com.management.mdm.dtos;
 
 
-import com.example.mdm.models.Employee;
+import com.management.mdm.models.Employee;
 import org.springframework.stereotype.Component;
 
 @Component
