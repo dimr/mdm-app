@@ -4,10 +4,6 @@ import $ from "jquery";
 export default class EmployeesNewRoute extends Route {
   @action
   add_employee(employee){
-    console.log("add employee--");
-    console.log(this.controller.get('name'));
-    console.log(this.controller.get('email'));
-    console.log(this.controller.get('companyName'));
     let data = {
       name:this.controller.get('name'),
       email:this.controller.get('email'),

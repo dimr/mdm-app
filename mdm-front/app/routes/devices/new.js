@@ -4,10 +4,6 @@ import $ from "jquery";
 export default class DevicesNewRoute extends Route {
   @action
   add_device(employee){
-    console.log("add device--");
-    console.log(this.controller.get('serial_number'));
-    console.log(this.controller.get('type'));
-    console.log(this.controller.get('employee_id'));
     let data = {
       serial_number:this.controller.get('serial_number'),
       email:this.controller.get('email'),

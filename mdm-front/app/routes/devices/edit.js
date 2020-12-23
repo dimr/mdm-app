@@ -19,8 +19,6 @@ export default class DeviceEditRoute extends Route {
   }
   @action
   edit_device(device){
-    console.log("___",device)
-    console.log("g;dflgkfd;lg");
     let data ={id:device.id,
       serial_number:device.serial_number,
       type:device.type,
@@ -38,6 +36,5 @@ export default class DeviceEditRoute extends Route {
     }).fail(function(xhr,status,error){
       console.log(error,status,xhr)
     })
-    console.log("end",data)
   }
 }

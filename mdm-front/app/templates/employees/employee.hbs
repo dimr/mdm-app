@@ -35,17 +35,11 @@
         <th scope="col">id</th>
         <th scope="col">device type</th>
         <th scope="col">serial number</th>
-        <!--    <th scope="col">devices</th>-->
 
       </tr>
       </thead>
       <tbody>
-      <!--  <tr>-->
-      <!--    <th scope="row">1</th>-->
-      <!--    <td>Mark</td>-->
-      <!--    <td>Otto</td>-->
-      <!--    <td>@mdo</td>-->
-      <!--  </tr>-->
+
       {{#each this.model.devices as |device|}}
         <tr>
           <th>{{device.id}}</th>

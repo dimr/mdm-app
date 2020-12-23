@@ -2,13 +2,7 @@ import Route from '@ember/routing/route';
 import $ from "jquery";
 export default class IndexRoute extends Route {
  async model(){
-   console.log('start request..');
-   // let response =await fetch('/employees');
-   //  let { data } = await response.json();
-   // console.log('end request');
-   // return Ember.$.ajax("/employees")
-   // console.log(response.data);
-   //  console.log("Paramgs",params)
+
     return $.ajax('/api/employees').then(data=>{
       let allData = data.content;
 
@@ -18,9 +12,6 @@ export default class IndexRoute extends Route {
         return {id,name,email,devices,company,...attributes};
       });
     })
-   // return fetch('/api/employees').then(function(response){
-   //  console.log(response);
-   //   return response.json();
-   // });
+
  }
 }
