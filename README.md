@@ -1,5 +1,5 @@
 ## set up database with docker
-To initialize the database run the following commands:
+To initialize the database and create the tables run the following commands:
 
 ```
 docker build -t postgres/mdm-postgres:latest .
