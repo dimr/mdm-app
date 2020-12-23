@@ -6,6 +6,7 @@
     <th scope="col">id</th>
     <th scope="col">type</th>
     <th scope="col">serial number</th>
+    <th scope="col">Edit</th>
   </tr>
   </thead>
   {{#each @model as |device|}}
@@ -13,6 +14,9 @@
       <td>{{device.id}}</td>
       <td>{{device.type}}</td>
       <td>{{device.serial_number}}</td>
+      <LinkTo @route="devices.edit" @model={{device.id}}>
+        Edit
+      </LinkTo>
     </tr>
   {{/each}}
   <!--    <th scope="col">devices</th>-->

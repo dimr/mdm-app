@@ -2,7 +2,23 @@
 {{!-- Feel free to remove this! --}}
 <div class="container">
   <h1 class="text-center">Mobile device management</h1>
-  <LinkTo @route="employees.new" >
+  <div class="row">
+    <div class="col-3">
+  <LinkTo @route="employees.new">
     New Employee</LinkTo>
+    </div>
+    <div class="col-3">
+  <LinkTo @route="employees.index" >
+    Employees</LinkTo>
+    </div>
+    <div class="col-3">
+  <LinkTo @route="devices.new" >
+    New Device</LinkTo>
+    </div>
+    <div class="col-3">
+  <LinkTo @route="devices.index" >
+    Devices</LinkTo>
+    </div>
+  </div>
 {{outlet}}
 </div>
