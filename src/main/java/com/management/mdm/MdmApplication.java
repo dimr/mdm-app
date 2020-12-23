@@ -17,21 +17,7 @@ public class MdmApplication {
     }
     public static void main(String[] args) {
         SpringApplication.run(MdmApplication.class, args);
-//        DeviceDTO deviceDTO = new DeviceDTO();
-//        deviceDTO.setId(1L);
-//        deviceDTO.setType("mobile");
-//        deviceDTO.setSerial_number("gsdgsd");
-//
-//        deviceDTO.setEmployee(new Employee("dimitrs"));
-//        System.out.println(deviceDTO)
-        Device device = new Device();
-        device.setEmployee_id(10);
-        device.setType("mobile");
 
-        System.out.println(device.toString());
-//        System.out.println(companyDTO.getName());
-//        System.out.println(companyDTO.testFunction());
-//        System.out.println(companyDTO);
     }
 
 }
