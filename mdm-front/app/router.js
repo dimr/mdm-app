@@ -16,5 +16,6 @@ Router.map(function() {
   this.route('devices',function(){
     this.route('index',{path:"/"});
     this.route('new');
+    this.route('edit',{path:'/edit/:device_id'})
   });
 });

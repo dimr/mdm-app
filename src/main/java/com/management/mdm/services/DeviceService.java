@@ -63,7 +63,6 @@ public class DeviceService {
     public ResponseEntity<DeviceDTO> saveUpdateDevice(DeviceDTO deviceDTO){
         Device newDevice;
         Employee employee = employeeRepository.findEmployeeById((long) deviceDTO.getEmployee_id());
-
         if (deviceDTO.getId()==null){
             newDevice = mapper.map(deviceDTO,Device.class);
             newDevice.setEmployee_id(employee.getId());
@@ -77,6 +76,7 @@ public class DeviceService {
             newDevice.setEmployee_id(deviceDTO.getEmployee_id());
             newDevice.setSerial_number(deviceDTO.getSerial_number());
             newDevice.setType(deviceDTO.getType());
+            newDevice.setEmployee(employee);
             deviceRepository.save(newDevice);
         }
         return ResponseEntity.ok(deviceDTO);
