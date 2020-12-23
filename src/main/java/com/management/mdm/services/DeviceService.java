@@ -47,10 +47,6 @@ public class DeviceService {
 
     }
 
-//    public ResponseEntity<DeviceDTO> saveDevice(DeviceDTO deviceDTO){
-//        Device device;
-//
-//    }
     public ResponseEntity<String> deleteDevice(Long id){
         Device device = deviceRepository.findDeviceById(id);
         deviceRepository.delete(device);
@@ -66,44 +62,23 @@ public class DeviceService {
 
     public ResponseEntity<DeviceDTO> saveUpdateDevice(DeviceDTO deviceDTO){
         Device newDevice;
-        System.out.println("_------------------------------"+deviceDTO);
         Employee employee = employeeRepository.findEmployeeById((long) deviceDTO.getEmployee_id());
-        System.out.println("DEFORE ENTER.............."+deviceDTO.getId());
-        if (deviceDTO.getId()==null){
-            System.out.println("ENTERED.............."+employee);
-//            newDevice= deviceRepository.findDeviceById((long) deviceDTO.getId());
-            //map from DeviceDTO to device and save the device
-            newDevice = mapper.map(deviceDTO,Device.class);
-            System.out.println("INITIAL NEW DEVICE"+" "+deviceDTO.getId()+deviceDTO.getEmployee_id());
 
-//            newDevice.setEmployee(employee);
+        if (deviceDTO.getId()==null){
+            newDevice = mapper.map(deviceDTO,Device.class);
             newDevice.setEmployee_id(employee.getId());
             newDevice.setEmployee(employee);
             DeviceDTO deviceDTO1 = mapper.map(newDevice,DeviceDTO.class);
             deviceRepository.save(newDevice);
-            System.out.println("DEVICE ENTITY "+newDevice.toString());
-            System.out.println("DEVICE DTO "+deviceDTO.toString());
-            System.out.println("NEW DEVICE "+ newDevice.toString());
-            System.out.println("NEW DTO "+ deviceDTO.toString());
             return ResponseEntity.ok(mapper.map(newDevice,DeviceDTO.class));
         }
         else{
-            System.out.println("DEVICE DTO:"+ deviceDTO);
             newDevice=deviceRepository.findDeviceById(deviceDTO.getId());
-//            newDevice.setEmployee_id();
-            System.out.println("FOUND DEVICE TO CHAGE: "+newDevice);
-//            mapper.map(deviceDTO,Device.class);
-//            System.out.println("NEW DEVIDE ->"+newDevice);
-//            newDevice.setSerial_number(deviceDTO.getSerial_number());
-//            newDevice.setSerial_number(deviceDTO.getSerial_number());
-            System.out.println("WHAT THE FUCTK "+mapper.map(deviceDTO,Device.class));
-//            deviceRepository.save(mapper.map(deviceDTO,Device.class));
             newDevice.setEmployee_id(deviceDTO.getEmployee_id());
             newDevice.setSerial_number(deviceDTO.getSerial_number());
             newDevice.setType(deviceDTO.getType());
             deviceRepository.save(newDevice);
         }
-        System.out.println("OUT HERER------------------");
         return ResponseEntity.ok(deviceDTO);
     }
 }

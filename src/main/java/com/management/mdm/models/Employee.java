@@ -14,16 +14,6 @@ public class Employee {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", devices=" + devices +
-                ", company=" + company +
-                '}';
-    }
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)// because of postgresql
@@ -81,10 +71,7 @@ public class Employee {
         this.company = company;
     }
 
-    //    @ManyToOne(fetch= FetchType.LAZY)
-//    public List<Device> devices(){
-//
-//    }
+
     public void addDevice(Device device) {
         if (device==null)
             return;
@@ -106,9 +93,17 @@ public class Employee {
     }
 
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", devices=" + devices +
+                ", company=" + company +
+                '}';
+    }
 
 
-//    public void setDevices(Set<Device> devices) {
-//        this.devices = devices;
-//    }
+
 }

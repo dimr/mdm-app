@@ -62,16 +62,7 @@ public class Device {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Device{" +
-                "id=" + id +
-                ", serial_number='" + serial_number + '\'' +
-                ", type='" + type + '\'' +
-//                ", employee=" + employee +
-                ", employee_id=" + employee_id +
-                '}';
-    }
+
 
     public String getSerial_number() {
         return this.serial_number;
@@ -87,5 +78,15 @@ public class Device {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "id=" + id +
+                ", serial_number='" + serial_number + '\'' +
+                ", type='" + type + '\'' +
+                ", employee_id=" + employee_id +
+                '}';
     }
 }

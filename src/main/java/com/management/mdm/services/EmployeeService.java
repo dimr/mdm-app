@@ -67,15 +67,10 @@ public class EmployeeService {
             Optional<Employee> employee = employeeRepository.findById(employeeDTO.getId());
             Employee updatedEmployee;
             Company company=this.companyRepository.findByName(employeeDTO.getCompanyName());
-//            this.mappper.map(company,CompanyDTO.class);
-//            employeeDTO.setCompany(new Company(C);
-//            Optional<CompanyDTO> optionalCompany = companyService.findCompanyByName("comquent");
             CompanyDTO companyDTO = convertToDto(company);
             employeeDTO.setCompany(companyDTO);
             this.mappper.map(employeeDTO,employee.get());
             updatedEmployee=employeeRepository.save(employee.get());
-            // mapt to existing entity reverse mapping?
-            System.out.println("EMPLOYEE NEW"+ updatedEmployee);
             return ResponseEntity.ok(employeeDTO);
 
         }
@@ -88,8 +83,6 @@ public class EmployeeService {
 
             return ResponseEntity.ok(employeeDTO);
         }
-//        System.out.println("ERROR");
-//        return ResponseEntity.ok(employeeDTO);
     }
 
     public ResponseEntity<String> deleteEmployee(Long id){

@@ -49,7 +49,6 @@ public class DeviceController {
         return deviceService.findDeviceByEmployeeId(employee_id);
     }
 
-    //#TODO fix this
     @PostMapping("/devices")
     public ResponseEntity<DeviceDTO> saveOrUpdateDevice(@RequestBody DeviceDTO deviceDTO){
         return deviceService.saveUpdateDevice(deviceDTO);
