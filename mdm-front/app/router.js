@@ -13,6 +13,8 @@ Router.map(function() {
     this.route('new');
     this.route('edit',{path:'/edit/:employee_id'});
   });
-  // this.route('employee',{path:'/employee/:employee_id'});
-  this.route('devices');
+  this.route('devices',function(){
+    this.route('index',{path:"/"});
+    this.route('new');
+  });
 });
