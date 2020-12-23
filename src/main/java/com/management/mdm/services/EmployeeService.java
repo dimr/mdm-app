@@ -61,8 +61,7 @@ public class EmployeeService {
     }
     public ResponseEntity<EmployeeDTO> saveOrUpdateEmployee(EmployeeDTO employeeDTO){
         boolean exists = employeeDTO.getId()!=null;
-        System.out.println("SEND----------->: "+employeeDTO.getCompanyName()
-        );
+
         if (exists){
             Optional<Employee> employee = employeeRepository.findById(employeeDTO.getId());
             Employee updatedEmployee;
@@ -75,7 +74,6 @@ public class EmployeeService {
 
         }
         else{
-            System.out.println("NEW EMPLOYEEE");
             Company company = companyRepository.findByName(employeeDTO.getCompanyName());
             Employee newEmployee = convertToEntity(employeeDTO);
             newEmployee.setCompany(company);
